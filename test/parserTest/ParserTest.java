@@ -10,6 +10,8 @@ public class ParserTest {
     @Test
     public void firstPngImgTest() throws IOException {
         HtmlParser htmlParser = new HtmlParser();
+        ArrayList<String> idString= htmlParser.getIdString();
+        ArrayList<String> nameString= htmlParser.getNameString();
         ArrayList<String> healPointsString= htmlParser.getHealPointsString();
         ArrayList<String> attackString= htmlParser.getAttackString();
         ArrayList<String> defenseString=htmlParser.getDefenseString();
