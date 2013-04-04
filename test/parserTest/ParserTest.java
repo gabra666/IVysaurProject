@@ -20,6 +20,6 @@ public class ParserTest {
         ArrayList<String> speedString=htmlParser.getSpeedString();
         ArrayList<String> imageStringUrl=htmlParser.getImagesString();
 
-        System.out.print("+");
+        System.out.print("Break");
     }
 }

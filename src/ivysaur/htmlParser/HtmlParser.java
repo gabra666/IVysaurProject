@@ -50,7 +50,7 @@ public class HtmlParser {
     }
 
     private void extractAllStatsText() {
-        idString = extractAttribute(findStat("img[src*=http://cdn.bulbagarden.net/upload/][width=32][height=32]"),"alt");
+        idString = extractStat(findStat("td[align=right]"));
         nameString = extractStat(findStat("a[title*=(Pokémon)"));
         healPointsString = extractStat(findStat("td[style=background:#FF5959]"));
         attackString = extractStat(findStat("td[style=background:#F5AC78]"));
