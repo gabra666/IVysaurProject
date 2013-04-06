@@ -1,14 +1,16 @@
-package ivysaur.htmlParser;
+package ivysaurDbExtractor.HtmlExtractor;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class HtmlParser {
+public class HtmlExtractor {
 
     private File input;
     private Document doc;
@@ -23,10 +25,14 @@ public class HtmlParser {
     private ArrayList<String> speedString;
     private ArrayList<String> imagesString;
 
-    public HtmlParser() throws IOException {
-        input = new File("./html/pokemonBaseStat.htm");
-        doc = Jsoup.parse(input, "UTF-8");
-        extractAllStatsText();
+    public HtmlExtractor(){
+        try {
+            input = new File("../IVysaurHTML/pokemonBaseStat.htm");
+            doc = Jsoup.parse(input, "UTF-8");
+            extractAllStatsText();
+        } catch (IOException ex) {
+            Logger.getLogger(HtmlExtractor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private Elements findStat(String cssQuery) {

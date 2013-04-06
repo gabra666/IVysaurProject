@@ -3,6 +3,7 @@ package ivysaur;
 import ivysaur.pokemon.BaseStat;
 import ivysaur.pokemon.EffortValue;
 import ivysaur.pokemon.IndividualValue;
+import ivysaur.pokemon.Nature;
 import ivysaur.pokemon.Stat;
 
 public class Pokemon {
@@ -14,11 +15,12 @@ public class Pokemon {
     private IndividualValue individualValues;
     private EffortValue effortValues;
     private Stat stats;
+    private Nature nature;
 
     public Pokemon() {
     }
 
-    public Pokemon(String imageUrl, String Id, String name, BaseStat baseStats, IndividualValue individualValues, EffortValue effortValues, Stat stats) {
+    public Pokemon(String imageUrl, String Id, String name, BaseStat baseStats, IndividualValue individualValues, EffortValue effortValues, Stat stats, Nature nature) {
         this.imageUrl = imageUrl;
         this.Id = Id;
         this.name = name;
@@ -26,8 +28,10 @@ public class Pokemon {
         this.individualValues = individualValues;
         this.effortValues = effortValues;
         this.stats = stats;
+        this.nature = nature;
     }
 
+    
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -59,6 +63,12 @@ public class Pokemon {
     public String getId() {
         return Id;
     }
+    
+    public void setNature(Nature nature) {
+        this.nature = nature;
+    }
+
+   
 
     public String getName() {
         return name;
@@ -83,4 +93,9 @@ public class Pokemon {
     public String getImageUrl() {
         return imageUrl;
     }
+    
+     public Nature getNature() {
+        return nature;
+    }
+
 }
