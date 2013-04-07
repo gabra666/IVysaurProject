@@ -1,68 +1,70 @@
 package ivysaur.pokemon;
 
+import java.util.ArrayList;
+
 public class IndividualValue {
 
-    private int healPointsIv;
-    private int attackIv;
-    private int defenseIv;
-    private int specialAttackIv;
-    private int specialDefenseIv;
-    private int speedIv;
+    private ArrayList<Integer> healPointsIv;
+    private ArrayList<Integer> attackIv;
+    private ArrayList<Integer> defenseIv;
+    private ArrayList<Integer> specialAttackIv;
+    private ArrayList<Integer> specialDefenseIv;
+    private ArrayList<Integer> speedIv;
 
-    public IndividualValue(int healPointsIv, int attackIv, int defenseIv, int specialAttackIv, int specialDefenseIv, int speedIv) {
-        this.healPointsIv = healPointsIv;
-        this.attackIv = attackIv;
-        this.defenseIv = defenseIv;
-        this.specialAttackIv = specialAttackIv;
-        this.specialDefenseIv = specialDefenseIv;
-        this.speedIv = speedIv;
+    public IndividualValue() {
+        healPointsIv = new ArrayList<>();
+        attackIv = new ArrayList<>();
+        defenseIv = new ArrayList<>();
+        specialAttackIv = new ArrayList<>();
+        specialDefenseIv = new ArrayList<>();
+        speedIv = new ArrayList<>();
     }
 
-    public void setHealPointsIv(int healPointsIv) {
-        this.healPointsIv = healPointsIv;
+    public void addHealPointIv(int iv) {
+        healPointsIv.add(iv);
     }
 
-    public void setAttackIv(int attackIv) {
-        this.attackIv = attackIv;
+    public void addAttackIv(int iv) {
+        attackIv.add(iv);
     }
 
-    public void setDefenseIv(int defenseIv) {
-        this.defenseIv = defenseIv;
+    public void addDefenseIv(int iv) {
+        defenseIv.add(iv);
     }
 
-    public void setSpecialAttackIv(int specialAttackIv) {
-        this.specialAttackIv = specialAttackIv;
+    public void addSpecialAttackIv(int iv) {
+        specialAttackIv.add(iv);
     }
 
-    public void setSpecialDefenseIv(int specialDefenseIv) {
-        this.specialDefenseIv = specialDefenseIv;
+    public void addSpecialDefenseIv(int iv) {
+        specialDefenseIv.add(iv);
     }
 
-    public void setSpeedIv(int speedIv) {
-        this.speedIv = speedIv;
+    public void addSpeedIv(int iv) {
+        speedIv.add(iv);
     }
 
-    public int getHealPointsIv() {
+    public ArrayList<Integer> getHealPointsIv() {
         return healPointsIv;
     }
 
-    public int getAttackIv() {
+    public ArrayList<Integer> getAttackIv() {
         return attackIv;
     }
 
-    public int getDefenseIv() {
+    public ArrayList<Integer> getDefenseIv() {
         return defenseIv;
     }
 
-    public int getSpecialAttackIv() {
+    public ArrayList<Integer> getSpecialAttackIv() {
         return specialAttackIv;
     }
 
-    public int getSpecialDefenseIv() {
+    public ArrayList<Integer> getSpecialDefenseIv() {
         return specialDefenseIv;
     }
 
-    public int getSpeedIv() {
+    public ArrayList<Integer> getSpeedIv() {
         return speedIv;
     }
 }
