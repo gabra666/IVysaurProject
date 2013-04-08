@@ -1,7 +1,7 @@
 package ivysaurDbExtractorTest;
 
-import ivysaurDbExtractor.persistance.BaseStatsDbCreator;
-import ivysaurDbExtractor.persistance.BaseStatsManager;
+import ivysaur.dataExtractor.BaseStatsDbCreator;
+import ivysaur.persistance.BaseStatsManager;
 import junit.framework.Assert;
 import org.junit.Test;
 

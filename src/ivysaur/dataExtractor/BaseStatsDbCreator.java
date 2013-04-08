@@ -1,6 +1,6 @@
-package ivysaurDbExtractor.persistance;
+package ivysaur.dataExtractor;
 
-import ivysaurDbExtractor.HtmlExtractor.HtmlExtractor;
+import ivysaur.persistance.SqliteConnector;
 
 public class BaseStatsDbCreator {
 

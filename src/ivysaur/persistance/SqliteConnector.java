@@ -1,4 +1,4 @@
-package ivysaurDbExtractor.persistance;
+package ivysaur.persistance;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,11 +8,12 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SqliteConnector {
+public class SqliteConnector implements DBConnector{
 
     private Connection connection = null;
     private Statement statement;
 
+    @Override
     public void connect(String dbFile) {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -23,6 +24,7 @@ public class SqliteConnector {
         }
     }
 
+    @Override
     public void createTable(String table, String[] columns) {
         try {
             String query = "create table " + table + "(";
@@ -38,6 +40,7 @@ public class SqliteConnector {
         }
     }
 
+    @Override
     public void insert(String table, String[] values) {
         try {
             String query = "insert into " + table + " values(";
@@ -53,6 +56,7 @@ public class SqliteConnector {
 
     }
 
+    @Override
     public ResultSet selectAllFromConditional(String table, String condition) {
         try {
             return statement.executeQuery("select * from " + table + "where" + condition);
@@ -62,6 +66,7 @@ public class SqliteConnector {
         return null;
     }
 
+    @Override
     public ResultSet selectAllFrom(String table) {
         try {
             return statement.executeQuery("select * from " + table);
@@ -71,6 +76,7 @@ public class SqliteConnector {
         return null;
     }
 
+    @Override
     public ResultSet selectColumnFromConditional(String column, String table, String condition)  {
         try {
             return statement.executeQuery("select * from " + table + " where " + condition);
@@ -80,6 +86,7 @@ public class SqliteConnector {
         return null;
     }
 
+    @Override
     public ResultSet selectColumnFrom(String column, String table) {
         try {
             return statement.executeQuery("select * from " + table);
@@ -89,6 +96,7 @@ public class SqliteConnector {
         return null;
     }
 
+    @Override
     public void closeConnection() {
         if (connection != null) {
             try {

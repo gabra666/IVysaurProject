@@ -1,4 +1,4 @@
-package ivysaurDbExtractor.HtmlExtractor;
+package ivysaur.dataExtractor;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package ivysaurDbExtractorTest;
 
-import ivysaurDbExtractor.HtmlExtractor.HtmlExtractor;
+import ivysaur.dataExtractor.HtmlExtractor;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.junit.Test;

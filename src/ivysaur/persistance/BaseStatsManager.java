@@ -1,4 +1,4 @@
-package ivysaurDbExtractor.persistance;
+package ivysaur.persistance;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class BaseStatsManager {
 
-    private SqliteConnector connector;
+    private DBConnector connector;
 
     public BaseStatsManager() {
         connector = new SqliteConnector();
