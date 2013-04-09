@@ -1,8 +1,7 @@
 package ivysaur.calculators;
 
+import ivysaur.Pokemon;
 import ivysaur.persistance.BaseStatsManager;
-import ivysaur.pokemon.EffortValue;
-import ivysaur.pokemon.Nature;
 
 public class StatCalculator {
 
@@ -13,83 +12,95 @@ public class StatCalculator {
     }
 
     // floor((2*BaseHP + HPIV + floor(EV/4) + 100)*Level/100 + 10)==HP_Stat
-    public int calculateHealPointStat(String pokemonName, int level, EffortValue ev, int iv) {
-        double valor = (2 * baseStatManager.getBaseHealPoints(pokemonName) + iv + ev.getHealPointsEv() / 4 + 100) * level / 100 + 10;
-        return (int) valor;
+    public int calculateHealPointStat(Pokemon pokemon, int iv) {
+        double value = (2 * baseStatManager.getBaseHealPoints(pokemon.getName()) + iv + 
+                pokemon.getEffortValues().getHealPointsEv() / 4 + 100) * pokemon.getLevel() / 100 + 10;
+        return (int) value;
     }
 
-    public int calculateMaxHealPoints(String pokemonName, int level, EffortValue ev) {
-        return calculateHealPointStat(pokemonName, level, ev, 31);
+    public int calculateMaxHealPoints(Pokemon pokemon) {
+        return calculateHealPointStat(pokemon, 31);
     }
 
-    public int calculateMinHealPoints(String pokemonName, int level, EffortValue ev) {
-        return calculateHealPointStat(pokemonName, level, ev, 0);
+    public int calculateMinHealPoints(Pokemon pokemon) {
+        return calculateHealPointStat(pokemon, 0);
     }
 
     // floor((2*BaseAtk + AtkIV + floor(EV/4))*Level/100 + 5)* Nature ==Atk_Stat
-    public int calculateStat(int baseStat, int level, int ev, int iv, double natureValue) {
-        double valor = ((2 * baseStat + iv + ev / 4) * level / 100 + 5) * natureValue;
-        return (int) valor;
+    private int calculateStat(int baseStat, int level, int ev, double natureValue, int iv) {
+        double value = ((2 * baseStat + iv + ev / 4) * level / 100 + 5) * natureValue;
+        return (int) value;
     }
     //BASICS
-    public int calculateAttack(String pokemonName, int level, EffortValue ev, int iv, Nature nature) {
-        return calculateStat(baseStatManager.getBaseAttack(pokemonName), level, ev.getAttackEv(), iv, nature.getAttack());
+
+    public int calculateAttack(Pokemon pokemon, int iv) {
+        return calculateStat(baseStatManager.getBaseAttack(pokemon.getName()),
+                pokemon.getLevel(), pokemon.getEffortValues().getAttackEv(),
+                pokemon.getNature().getAttack(), iv);
     }
 
-    public int calculateDefense(String pokemonName, int level, EffortValue ev, int iv, Nature nature) {
-        return calculateStat(baseStatManager.getBaseDefense(pokemonName), level, ev.getDefenseEv(), iv, nature.getDefense());
+    public int calculateDefense(Pokemon pokemon, int iv) {
+        return calculateStat(baseStatManager.getBaseDefense(pokemon.getName()),
+                pokemon.getLevel(), pokemon.getEffortValues().getDefenseEv(),
+                pokemon.getNature().getDefense(), iv);
     }
 
-    public int calculateSpecialAttack(String pokemonName, int level, EffortValue ev, int iv, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpecialAttack(pokemonName), level, ev.getSpecialAttackEv(), iv, nature.getSpecialAttack());
+    public int calculateSpecialAttack(Pokemon pokemon, int iv) {
+        return calculateStat(baseStatManager.getBaseSpecialAttack(pokemon.getName()),
+                pokemon.getLevel(), pokemon.getEffortValues().getSpecialAttackEv(),
+                pokemon.getNature().getSpecialAttack(), iv);
     }
 
-    public int calculateSpecialDefense(String pokemonName, int level, EffortValue ev, int iv, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpecialDefense(pokemonName), level, ev.getSpecialDefenseEv(), iv, nature.getSpecialDefense());
+    public int calculateSpecialDefense(Pokemon pokemon, int iv) {
+        return calculateStat(baseStatManager.getBaseSpecialDefense(pokemon.getName()),
+                pokemon.getLevel(), pokemon.getEffortValues().getSpecialDefenseEv(),
+                pokemon.getNature().getSpecialDefense(), iv);
     }
 
-    public int calculateSpeed(String pokemonName, int level, EffortValue ev, int iv, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpeed(pokemonName), level, ev.getSpeedEv(), iv, nature.getSpeed());
+    public int calculateSpeed(Pokemon pokemon, int iv) {
+        return calculateStat(baseStatManager.getBaseSpeed(pokemon.getName()),
+                pokemon.getLevel(), pokemon.getEffortValues().getSpeedEv(),
+                pokemon.getNature().getSpeed(), iv);
     }
 
     //MAX AND MIN
-    public int calculateMaxAttack(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseAttack(pokemonName), level, ev.getAttackEv(), 31, nature.getAttack());
+    public int calculateMaxAttack(Pokemon pokemon) {
+        return calculateAttack(pokemon, 31);
     }
 
-    public int calculateMinAttack(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseAttack(pokemonName), level, ev.getAttackEv(), 0, nature.getAttack());
+    public int calculateMinAttack(Pokemon pokemon) {
+        return calculateAttack(pokemon, 0);
     }
 
-    public int calculateMaxDefense(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseDefense(pokemonName), level, ev.getDefenseEv(), 31, nature.getDefense());
+    public int calculateMaxDefense(Pokemon pokemon) {
+        return calculateDefense(pokemon, 31);
     }
 
-    public int calculateMinDefense(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseDefense(pokemonName), level, ev.getDefenseEv(), 0, nature.getDefense());
+    public int calculateMinDefense(Pokemon pokemon) {
+        return calculateDefense(pokemon, 0);
+    }
+    public int calculateMaxSpecialAttack(Pokemon pokemon) {
+        return calculateSpecialAttack(pokemon, 31);
     }
 
-    public int calculateMaxSpecialAttack(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpecialAttack(pokemonName), level, ev.getSpecialAttackEv(), 31, nature.getSpecialAttack());
+    public int calculateMinSpecialAttack(Pokemon pokemon) {
+        return calculateSpecialAttack(pokemon, 0);
     }
 
-    public int calculateMinSpecialAttack(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpecialAttack(pokemonName), level, ev.getSpecialAttackEv(), 0, nature.getSpecialAttack());
+    public int calculateMaxSpecialDefense(Pokemon pokemon) {
+        return calculateSpecialDefense(pokemon, 31);
     }
 
-    public int calculateMaxSpecialDefense(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpecialDefense(pokemonName), level, ev.getSpecialDefenseEv(), 31, nature.getSpecialDefense());
+    public int calculateMinSpecialDefense(Pokemon pokemon) {
+        return calculateSpecialDefense(pokemon, 0);
+    }
+    
+    public int calculateMaxSpeed(Pokemon pokemon) {
+        return calculateSpeed(pokemon, 31);
     }
 
-    public int calculateMinSpecialDefense(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpecialDefense(pokemonName), level, ev.getSpecialDefenseEv(), 0, nature.getSpecialDefense());
+    public int calculateMinSpeed(Pokemon pokemon) {
+        return calculateSpeed(pokemon, 0);
     }
 
-    public int calculateMaxSpeed(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpeed(pokemonName), level, ev.getSpeedEv(), 31, nature.getSpeed());
-    }
-
-    public int calculateMinSpeed(String pokemonName, int level, EffortValue ev, Nature nature) {
-        return calculateStat(baseStatManager.getBaseSpeed(pokemonName), level, ev.getSpeedEv(), 0, nature.getSpeed());
-    }
 }

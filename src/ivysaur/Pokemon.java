@@ -16,11 +16,12 @@ public class Pokemon {
     private EffortValue effortValues;
     private Stat stats;
     private Nature nature;
+    private int level;
 
     public Pokemon() {
     }
 
-    public Pokemon(String imageUrl, String Id, String name, BaseStat baseStats, IndividualValue individualValues, EffortValue effortValues, Stat stats, Nature nature) {
+    public Pokemon(String imageUrl, String Id, String name, BaseStat baseStats, IndividualValue individualValues, EffortValue effortValues, Stat stats, Nature nature, int level) {
         this.imageUrl = imageUrl;
         this.Id = Id;
         this.name = name;
@@ -29,9 +30,9 @@ public class Pokemon {
         this.effortValues = effortValues;
         this.stats = stats;
         this.nature = nature;
+        this.level = level;
     }
 
-    
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -63,12 +64,16 @@ public class Pokemon {
     public String getId() {
         return Id;
     }
-    
+
     public void setNature(Nature nature) {
         this.nature = nature;
     }
+    
+    
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
-   
 
     public String getName() {
         return name;
@@ -93,9 +98,12 @@ public class Pokemon {
     public String getImageUrl() {
         return imageUrl;
     }
-    
-     public Nature getNature() {
+
+    public Nature getNature() {
         return nature;
     }
 
+    public int getLevel() {
+        return level;
+    }
 }

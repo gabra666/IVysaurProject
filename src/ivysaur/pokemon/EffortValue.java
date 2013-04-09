@@ -19,6 +19,17 @@ public class EffortValue {
         this.speedEv = 0;
     }
 
+    public EffortValue(int healPointsEv, int attackEv, int defenseEv, int specialAttackEv, int specialDefenseEv, int speedEv) {
+        this.healPointsEv = healPointsEv;
+        this.attackEv = attackEv;
+        this.defenseEv = defenseEv;
+        this.specialAttackEv = specialAttackEv;
+        this.specialDefenseEv = specialDefenseEv;
+        this.speedEv = speedEv;
+    }
+    
+    
+
     public void setHealPointsEv(int healPointsEv) {
         this.healPointsEv = healPointsEv;
     }
